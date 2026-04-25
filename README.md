@@ -1,69 +1,156 @@
-# Peer Group Analysis of Abbott Laboratories (ABT) within SIC 2834
+# ABT Peer Comparison
 
 ## Project Overview
 
-This project examines the financial performance of Abbott Laboratories (ABT) relative to firms in SIC 2834 (Pharmaceutical Preparations) over the period 2014–2023.
+This project analyses Abbott Laboratories (ABT) in relation to a peer group using financial data from WRDS/Compustat and Python. The aim is to place ABT within an industry context rather than evaluating the company on its own. By comparing sales, net income, profitability, and firm size across similar companies, the project provides a clear example of financial peer benchmarking.
 
-Before conducting the focused peer-group comparison for ABT, the project first reviews a broader set of selected North American companies in order to identify general market and financial trends. This preliminary step provides background context for the later firm-level and industry-level analysis. After establishing this broader perspective, the analysis narrows to ABT and its SIC 2834 peer group to assess ABT’s relative position within a more comparable industry setting.
+The project combines data extraction, cleaning, summary analysis, and visualisation in a reproducible Python workflow.
 
-The final analysis compares ABT with its industry peers in terms of sales, net income, profitability, and firm size, and presents the results through time-series charts, a cross-sectional scatter plot, and a written discussion.
+---
 
-## Objective
+## Analytical Objective
 
-The main objective of the project is to evaluate Abbott Laboratories’ financial performance within its industry peer group. More specifically, the project aims to:
+The main objective of this project is to compare Abbott Laboratories with peer firms and identify patterns in financial performance over time. The analysis focuses on the following questions:
 
-- review broad financial trends among a selected group of North American firms;
-- identify an appropriate narrow peer group for ABT using SIC 2834;
-- compare ABT with peer firms in terms of scale, earnings, and profitability;
-- assess ABT’s relative standing within the pharmaceutical preparations industry.
+- How does ABT compare with similar firms in terms of scale and financial performance?
+- How have average sales, net income, and profitability changed over time within the peer group?
+- Does larger firm size appear to be associated with stronger profitability?
 
-## Analytical Structure
+This analysis is intended for a business-oriented audience, such as students, financial analysts, or managers interested in industry benchmarking.
 
-The project is divided into two stages:
+---
 
-### 1. Broad Trend Analysis
-A preliminary review of selected North American firms is conducted to identify general trends in firm performance and market characteristics.
+## Dataset
 
-### 2. Focused Peer Group Analysis
-A detailed comparison is then performed between Abbott Laboratories and firms in SIC 2834, using industry-specific benchmarks to evaluate ABT’s relative performance.
+The dataset was obtained from **WRDS**, using **Compustat annual fundamentals**. WRDS was selected because it is a reliable academic and professional platform that provides standardised company financial data suitable for comparison across firms and years.
 
-## Data Source
+### Data characteristics
+- Firm-level accounting data from Compustat
+- Industry identification using SIC classification
+- Annual observations across multiple fiscal years
+- Variables suitable for peer comparison and visualisation
 
-The analysis uses firm-level accounting data for publicly listed companies. A broader sample of selected North American firms is first used to examine overall trends, after which the sample is narrowed to firms classified under SIC 2834 for the peer-group comparison. The final ABT peer-group analysis covers fiscal years 2014–2023.
+### Key variables used
+- `sale` — sales/revenue
+- `ni` — net income
+- `at` — total assets
+- profitability measure based on earnings relative to assets
+- company identifiers such as ticker, company name, and SIC code where relevant
 
-## Variables Used
+A broader industry set was first explored, and a narrower peer comparison group was then used to improve relevance.
 
-The main variables used in the analysis are:
+---
 
-- **Sales**: annual firm revenue  
-- **Net Income**: annual net earnings  
-- **Total Assets**: used as a measure of firm size  
-- **Profitability (NI/AT)**: calculated as Net Income divided by Total Assets  
+## Tools and Python Libraries
 
-## Methodology
+The project was completed in Python using the following tools and libraries:
 
-The analysis was carried out in the following stages:
+- `wrds` — to connect to WRDS and extract data
+- `pandas` — for data cleaning, filtering, summarisation, and table creation
+- `matplotlib` — for charts and visual outputs
 
-1. Review a selected sample of North American firms to identify broad trends in firm performance and market characteristics.
-2. Select Abbott Laboratories (ABT) as the focal firm for the detailed analysis.
-3. Define the peer group using SIC 2834 (Pharmaceutical Preparations).
-4. Extract annual financial data for ABT and its peers over the 2014–2023 period.
-5. Compute peer-group benchmark measures, including average or median values where applicable.
-6. Compare ABT with the peer group using:
-   - Sales trend chart
-   - Net income trend chart
-   - Profitability trend chart
-   - Firm size vs profitability scatter plot (2023)
-7. Summarize and interpret the findings in the written report.
+---
 
-## File Structure
+## Workflow
 
-A typical project structure is as follows:
+The analysis followed these main steps:
 
-```text
-.
-├── README.md
-├── data/
-├── code/
-├── figures/
-└── report/
+1. Connect to WRDS using Python.
+2. Identify Abbott Laboratories (ABT) and retrieve relevant company information.
+3. Build a peer group using industry-related filtering, including SIC-based grouping.
+4. Extract annual financial data for the selected firms.
+5. Clean and organise the dataset using `pandas`.
+6. Calculate average sales, net income, and profitability by fiscal year.
+7. Visualise the results using line charts and a scatter plot.
+
+---
+
+## Outputs
+
+The project generated the following main outputs:
+
+### 1. Average Sales by Fiscal Year
+A line chart showing how average peer-group sales changed over time.
+
+### 2. Average Net Income by Fiscal Year
+A line chart showing yearly changes in average net income.
+
+### 3. Average Profitability by Fiscal Year
+A trend chart showing how profitability varied across the sample period.
+
+### 4. Size vs Profitability Scatter Plot
+A cross-sectional chart comparing firm size and profitability, showing variation across firms in the peer group.
+
+These outputs were used to summarise both time-series trends and cross-sectional differences.
+
+---
+
+## Main Findings
+
+The analysis produced several clear findings:
+
+- Average sales generally increased over time, suggesting overall growth in scale across the peer group.
+- Average net income was more volatile than sales, indicating that revenue growth did not always lead to stable earnings.
+- Profitability fluctuated substantially and appeared relatively weak in some years, showing that firm growth and firm efficiency do not always move together.
+- Larger firms were not automatically more profitable, as shown in the size-versus-profitability scatter plot.
+
+Overall, the project shows that peer comparison is more informative than viewing a single company alone. It also demonstrates that scale, earnings, and profitability can tell different stories about financial performance.
+
+---
+
+## How to Run
+
+1. Open the Jupyter Notebook file.
+2. Run the cells in order.
+3. Log in to WRDS when prompted.
+4. Execute the SQL queries and analysis cells.
+5. Review the generated tables and charts.
+
+**Important note:** This project requires valid WRDS access credentials. Without WRDS access, the data extraction steps will not run successfully.
+
+---
+
+## Files
+
+- `ABT_Peer_Comparison.ipynb` — main notebook containing the code, outputs, and discussion
+- `README.md` — project overview and instructions
+- `figures/` — optional folder for saved charts if exported
+
+If your notebook filename is different, replace it with the actual file name.
+
+---
+
+## Limitations
+
+This project has several limitations:
+
+- Industry classification is useful for peer selection, but firms with the same or similar SIC code may still differ in business model, strategy, or product mix.
+- Accounting-based measures such as net income and profitability can be influenced by exceptional items, acquisitions, restructuring, or accounting choices.
+- Average values may be affected by outliers, especially when firms vary substantially in size.
+- The analysis is designed as a peer comparison exercise and does not provide a full company valuation or investment recommendation.
+
+These limitations mean the results should be interpreted as an exploratory benchmarking exercise rather than a complete financial assessment.
+
+---
+
+## Possible Improvements
+
+Future improvements could include:
+
+- adding more financial ratios such as ROA or ROE;
+- comparing medians as well as averages;
+- refining peer selection further;
+- highlighting ABT more directly in each visual;
+- exporting cleaner charts or building an interactive dashboard.
+
+---
+
+## Author Contribution
+
+I completed the data extraction, cleaning, analysis, and visualisation in Python. I also selected the comparison logic, interpreted the outputs, and structured the project as a business-focused peer benchmarking exercise.
+
+---
+
+## AI Disclosure
+
+I used ChatGPT (OpenAI, accessed on 25 April 2026) to assist with wording, structure, and limited Python clarification. All code execution, analysis, interpretation, and final submitted content were reviewed and completed by me.
